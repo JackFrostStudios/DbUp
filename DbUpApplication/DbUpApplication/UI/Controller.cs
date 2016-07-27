@@ -71,6 +71,7 @@ namespace DbUpApplication.UI
                 var newFilmInfo = _view.GetNewFilmInfo();
                 filmChoice.Name = newFilmInfo.Name;
                 filmChoice.Description = newFilmInfo.Description;
+                filmChoice.Genre = newFilmInfo.Genre;
 
                 db.SaveChanges();
             }

@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201607271553308_Create_Initial_Tables.Designer.cs">
       <DependentUpon>201607271553308_Create_Initial_Tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607271602061_Add_Genre_To_Films.cs" />
+    <Compile Include="Migrations\201607271602061_Add_Genre_To_Films.Designer.cs">
+      <DependentUpon>201607271602061_Add_Genre_To_Films.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Film\Film.cs" />
     <Compile Include="Model\Film\FilmDbContext.cs" />
@@ -76,11 +80,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0002_201607271602061_Add_Genre_To_Films.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_201607271553308_Create_Initial_Tables.sql" />
     <EmbeddedResource Include="Migrations\201607271553308_Create_Initial_Tables.resx">
       <DependentUpon>201607271553308_Create_Initial_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607271602061_Add_Genre_To_Films.resx">
+      <DependentUpon>201607271602061_Add_Genre_To_Films.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

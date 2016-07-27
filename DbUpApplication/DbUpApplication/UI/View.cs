@@ -51,11 +51,14 @@ namespace DbUpApplication.UI
             var filmName = Console.ReadLine();
             Console.WriteLine("Please type the film description: ");
             var filmDescription = Console.ReadLine();
+            Console.WriteLine("Please type the film genre:");
+            var filmGenre = Console.ReadLine();
 
             return new Film
             {
                 Name = filmName,
-                Description = filmDescription
+                Description = filmDescription,
+                Genre = filmGenre
             };
         }
 
