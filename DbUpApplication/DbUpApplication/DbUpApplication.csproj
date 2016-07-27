@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbUp\DatabaseManager.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Film\Actor.cs" />
     <Compile Include="Model\Film\Film.cs" />
     <Compile Include="Model\Film\FilmDbContext.cs" />
@@ -78,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_Create_Film_And_Ratings_Tables.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0004_Add_Actors_Stored_Procedure.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
