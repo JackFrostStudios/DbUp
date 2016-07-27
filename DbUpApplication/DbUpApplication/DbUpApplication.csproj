@@ -70,7 +70,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0002_Alter_Film_To_Include_Genre.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_Create_Film_And_Ratings_Tables.sql" />
   </ItemGroup>
