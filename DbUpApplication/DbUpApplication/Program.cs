@@ -8,6 +8,7 @@ namespace DbUpApplication
     {
         static void Main(string[] args)
         {
+#if DEBUG
             //Run DbUp
             var dbManager = new DatabaseManager("FilmDb");
             dbManager.CreateDatabase();
@@ -25,7 +26,7 @@ namespace DbUpApplication
             }
             
             Console.WriteLine("DbUp ran successfully");
-
+#endif
 
             //Main App
             var controller = new Controller();
