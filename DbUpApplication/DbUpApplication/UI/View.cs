@@ -10,6 +10,8 @@ namespace DbUpApplication.UI
         UpdateFilm,
         NewFilmRating,
         ViewFilmRating,
+        NewActor,
+        AddActorToFilm,
         Exit,
         None
     }
@@ -22,6 +24,8 @@ namespace DbUpApplication.UI
             Console.WriteLine("2 - Update Film");
             Console.WriteLine("3 - Add Film Rating");
             Console.WriteLine("4 - View Film Rating");
+            Console.WriteLine("5 - Enter New Actor");
+            Console.WriteLine("6 - Add Actor to film");
             Console.WriteLine("x - Exit");
         }
 
@@ -38,6 +42,10 @@ namespace DbUpApplication.UI
                     return MainMenuChoice.NewFilmRating;
                 case "4":
                     return MainMenuChoice.ViewFilmRating;
+                case "5":
+                    return MainMenuChoice.NewActor;
+                case "6":
+                    return MainMenuChoice.AddActorToFilm;
                 case "x":
                     return MainMenuChoice.Exit;
                 default:
@@ -121,6 +129,36 @@ namespace DbUpApplication.UI
                 Console.WriteLine("____________________________");
             });
             Console.WriteLine("****************************\n");
+        }
+
+        public Actor GetNewActor()
+        {
+            Console.WriteLine("Please enter the actors name:");
+            var name = Console.ReadLine();
+
+            return new Actor
+            {
+                Name = name
+            };
+        }
+
+        public Actor GetActorChoice(List<Actor> actors)
+        {
+            Console.WriteLine("Please type the number of actor: ");
+            WriteActorList(actors);
+            var choice = int.Parse(Console.ReadLine());
+
+            return actors[choice];
+        }
+
+        public void WriteActorList(List<Actor> actors)
+        {
+            for (var i = 0; i < actors.Count; i++)
+            {
+                Console.WriteLine("****************************");
+                Console.WriteLine("{0} - ID: {1} \nFilm Name: {2}", i, actors[i].ActorId, actors[i].Name);
+                Console.WriteLine("****************************");
+            }
         }
     }
 }

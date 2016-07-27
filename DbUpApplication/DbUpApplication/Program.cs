@@ -1,5 +1,6 @@
 ﻿using System;
 using DbUpApplication.DbUp;
+using DbUpApplication.Model;
 using DbUpApplication.UI;
 
 namespace DbUpApplication
@@ -29,7 +30,7 @@ namespace DbUpApplication
 #endif
 
             //Main App
-            var controller = new Controller();
+            var controller = new Controller("FilmDb");
 
             controller.Start();
         }

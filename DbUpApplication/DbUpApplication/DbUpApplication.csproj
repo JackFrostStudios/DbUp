@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbUp\DatabaseManager.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Film\Actor.cs" />
     <Compile Include="Model\Film\Film.cs" />
     <Compile Include="Model\Film\FilmDbContext.cs" />
     <Compile Include="Model\Film\FilmRating.cs" />
@@ -72,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0002_Alter_Film_To_Include_Genre.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0003_Add_Actors.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_Create_Film_And_Ratings_Tables.sql" />
