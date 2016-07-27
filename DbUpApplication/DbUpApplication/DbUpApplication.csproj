@@ -103,6 +103,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0003_201607271602061_Add_Genre_To_Films.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0004_Add_Actors_Stored_Procedure.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
