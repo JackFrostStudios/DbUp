@@ -6,6 +6,7 @@ namespace DbUpApplication.Model
     {
         public DbSet<Film> Films { get; set; }
         public DbSet<FilmRating> FilmRatings { get; set; }
+        public DbSet<Actor> Actors { get; set; }
 
         public FilmDbContext(string connectionStringName)
             : base(connectionStringName)

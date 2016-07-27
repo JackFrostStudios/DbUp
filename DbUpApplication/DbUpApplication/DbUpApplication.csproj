@@ -66,7 +66,12 @@
     <Compile Include="Migrations\201607271602061_Add_Genre_To_Films.Designer.cs">
       <DependentUpon>201607271602061_Add_Genre_To_Films.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607271611438_Add_Actors.cs" />
+    <Compile Include="Migrations\201607271611438_Add_Actors.Designer.cs">
+      <DependentUpon>201607271611438_Add_Actors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Film\Actor.cs" />
     <Compile Include="Model\Film\Film.cs" />
     <Compile Include="Model\Film\FilmDbContext.cs" />
     <Compile Include="Model\Film\FilmDbContextFactory.cs" />
@@ -91,6 +96,12 @@
     <EmbeddedResource Include="Migrations\201607271602061_Add_Genre_To_Films.resx">
       <DependentUpon>201607271602061_Add_Genre_To_Films.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607271611438_Add_Actors.resx">
+      <DependentUpon>201607271611438_Add_Actors.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0003_201607271602061_Add_Genre_To_Films.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

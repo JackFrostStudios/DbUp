@@ -29,7 +29,7 @@ namespace DbUpApplication
 #endif
 
             //Main App
-            var controller = new Controller();
+            var controller = new Controller("FilmDb");
 
             controller.Start();
         }

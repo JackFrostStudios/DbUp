@@ -6,8 +6,11 @@ namespace DbUpApplication.UI
     public class Controller
     {
         private readonly View _view;
-        public Controller()
+        private readonly string _connectionName;
+
+        public Controller(string connectionName)
         {
+            _connectionName = connectionName;
             _view = new View();
         }
 
@@ -30,6 +33,12 @@ namespace DbUpApplication.UI
                         break;
                     case MainMenuChoice.ViewFilmRating:
                         ViewFilmRating();
+                        break;
+                    case MainMenuChoice.NewActor:
+                        NewActor();
+                        break;
+                    case MainMenuChoice.AddActorToFilm:
+                        AddActorToFilm();
                         break;
                     case MainMenuChoice.Exit:
                         exit = true;
@@ -54,7 +63,7 @@ namespace DbUpApplication.UI
         {
             var newFilm = _view.GetNewFilmInfo();
 
-            using (var db = new FilmDbContext("FilmDb"))
+            using (var db = new FilmDbContext(_connectionName))
             {
                 db.Films.Add(newFilm);
                 db.SaveChanges();
@@ -64,7 +73,7 @@ namespace DbUpApplication.UI
 
         private void UpdateFilm()
         {
-            using (var db = new FilmDbContext("FilmDb"))
+            using (var db = new FilmDbContext(_connectionName))
             {
                 var films = db.Films.ToList();
                 var filmChoice = _view.GetFilmChoice(films);
@@ -79,7 +88,7 @@ namespace DbUpApplication.UI
 
         private void NewFilmRating()
         {
-            using (var db = new FilmDbContext("FilmDb"))
+            using (var db = new FilmDbContext(_connectionName))
             {
                 var films = db.Films.ToList();
                 var filmChoice = _view.GetFilmChoice(films);
@@ -93,7 +102,7 @@ namespace DbUpApplication.UI
 
         private void ViewFilmRating()
         {
-            using (var db = new FilmDbContext("FilmDb"))
+            using (var db = new FilmDbContext(_connectionName))
             {
                 var films = db.Films.ToList();
                 var filmChoice = _view.GetFilmChoice(films);
@@ -101,6 +110,30 @@ namespace DbUpApplication.UI
                 var ratings = db.FilmRatings.Where(x => x.FilmId == filmChoice.FilmId).ToList();
 
                 _view.WriteFilmRatings(filmChoice, ratings);
+            }
+        }
+
+        private void NewActor()
+        {
+            using (var db = new FilmDbContext(_connectionName))
+            {
+                var actor = _view.GetNewActor();
+                db.Actors.Add(actor);
+                db.SaveChanges();
+            }
+        }
+
+        private void AddActorToFilm()
+        {
+            using (var db = new FilmDbContext(_connectionName))
+            {
+                var actor = _view.GetActorChoice(db.Actors.ToList());
+
+                var film = _view.GetFilmChoice(db.Films.ToList());
+
+                film.Actors.Add(actor);
+
+                db.SaveChanges();
             }
         }
     }
