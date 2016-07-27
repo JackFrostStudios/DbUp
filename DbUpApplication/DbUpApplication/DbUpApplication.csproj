@@ -58,8 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbUp\DatabaseManager.cs" />
+    <Compile Include="Migrations\201607271553308_Create_Initial_Tables.cs" />
+    <Compile Include="Migrations\201607271553308_Create_Initial_Tables.Designer.cs">
+      <DependentUpon>201607271553308_Create_Initial_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Film\Film.cs" />
     <Compile Include="Model\Film\FilmDbContext.cs" />
+    <Compile Include="Model\Film\FilmDbContextFactory.cs" />
     <Compile Include="Model\Film\FilmRating.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,7 +78,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_Create_Film_And_Ratings_Tables.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_201607271553308_Create_Initial_Tables.sql" />
+    <EmbeddedResource Include="Migrations\201607271553308_Create_Initial_Tables.resx">
+      <DependentUpon>201607271553308_Create_Initial_Tables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
