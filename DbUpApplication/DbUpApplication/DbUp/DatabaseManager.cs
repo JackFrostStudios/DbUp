@@ -1,4 +1,5 @@
-﻿using DbUp;
+﻿using System.IO;
+using DbUp;
 using System.Reflection;
 using DbUp.Engine;
 
@@ -11,13 +12,16 @@ namespace DbUpApplication.DbUp
 
         public DatabaseManager(string connectionName, bool seedData)
         {
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase).Replace("file:\\", "");
+            var scriptsFiles = Path.Combine(outPutDirectory, "DbUp\\UpgradeScripts");
+
             _connectionString =
                 System.Configuration.ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
             if (seedData)
             {
                 _upgradeEngine = DeployChanges.To
                     .SqlDatabase(_connectionString)
-                    .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("DbUpApplication.DbUp.UpgradeScripts"))
+                    .WithScriptsFromFileSystem(scriptsFiles)
                     .LogToConsole()
                     .Build();
             }
@@ -25,7 +29,7 @@ namespace DbUpApplication.DbUp
             {
                 _upgradeEngine = DeployChanges.To
                     .SqlDatabase(_connectionString)
-                    .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("DbUpApplication.DbUp.UpgradeScripts") && s.Contains("Seed_Data") == false)
+                    .WithScriptsFromFileSystem(scriptsFiles, s => s.Contains("Seed_Data") == false)
                     .LogToConsole()
                     .Build();
             }

@@ -86,10 +86,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0002_201607271602061_Add_Genre_To_Films.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0002_201607271602061_Add_Genre_To_Films.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_201607271553308_Create_Initial_Tables.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0001_201607271553308_Create_Initial_Tables.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607271553308_Create_Initial_Tables.resx">
       <DependentUpon>201607271553308_Create_Initial_Tables.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,13 +105,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0003_201607271602061_Add_Genre_To_Films.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0003_201607271602061_Add_Genre_To_Films.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0004_Add_Actors_Stored_Procedure.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0004_Add_Actors_Stored_Procedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0005_Seed_Data.sql" />
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0005_Seed_Data.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
