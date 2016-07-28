@@ -1,5 +1,6 @@
 ﻿using System;
 using DbUpApplication.DbUp;
+using DbUpApplication.Model;
 using DbUpApplication.UI;
 
 namespace DbUpApplication
@@ -10,7 +11,10 @@ namespace DbUpApplication
         {
 #if DEBUG
             //Run DbUp
-            var dbManager = new DatabaseManager("FilmDb");
+            Console.WriteLine("Running DbUp, would you like to seed data? (Y/N)");
+            var seedData = Console.ReadLine() == "Y";
+
+            var dbManager = new DatabaseManager("FilmDb", seedData);
             dbManager.CreateDatabase();
             var upgradeResult = dbManager.Upgrade();
 
@@ -24,9 +28,25 @@ namespace DbUpApplication
                 Console.ReadKey();
                 return;
             }
-            
+
             Console.WriteLine("DbUp ran successfully");
 #endif
+
+            using (var dbContext = new FilmDbContext("FilmDb"))
+            {
+                try
+                {
+                    dbContext.Database.CompatibleWithModel(true);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                    Console.WriteLine("Database does not match model, press any key to exit...");
+                    Console.ReadLine();
+                    return;
+                }
+                Console.WriteLine("Success! Database matches EF model.");
+            }
 
             //Main App
             var controller = new Controller("FilmDb");

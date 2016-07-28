@@ -106,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0004_Add_Actors_Stored_Procedure.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0005_Seed_Data.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

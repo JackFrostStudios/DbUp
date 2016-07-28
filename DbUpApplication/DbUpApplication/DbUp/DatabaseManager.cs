@@ -9,15 +9,27 @@ namespace DbUpApplication.DbUp
         private string _connectionString;
         private UpgradeEngine _upgradeEngine;
 
-        public DatabaseManager(string connectionName)
+        public DatabaseManager(string connectionName, bool seedData)
         {
             _connectionString =
                 System.Configuration.ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
-            _upgradeEngine = DeployChanges.To
-                .SqlDatabase(_connectionString)
-                .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
-                .LogToConsole()
-                .Build();
+            if (seedData)
+            {
+                _upgradeEngine = DeployChanges.To
+                    .SqlDatabase(_connectionString)
+                    .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("DbUpApplication.DbUp.UpgradeScripts"))
+                    .LogToConsole()
+                    .Build();
+            }
+            else
+            {
+                _upgradeEngine = DeployChanges.To
+                    .SqlDatabase(_connectionString)
+                    .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("DbUpApplication.DbUp.UpgradeScripts") && s.Contains("Seed_Data") == false)
+                    .LogToConsole()
+                    .Build();
+            }
+
         }
 
         public DatabaseUpgradeResult Upgrade()
