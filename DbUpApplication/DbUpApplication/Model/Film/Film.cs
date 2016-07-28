@@ -9,6 +9,7 @@ namespace DbUpApplication.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }
+        public int Length { get; set; }
         public virtual ICollection<Actor> Actors { get; set; }
 
         public Film()

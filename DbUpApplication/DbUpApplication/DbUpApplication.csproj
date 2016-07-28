@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201607271611438_Add_Actors.Designer.cs">
       <DependentUpon>201607271611438_Add_Actors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607281116299_Add_Film_Length.cs" />
+    <Compile Include="Migrations\201607281116299_Add_Film_Length.Designer.cs">
+      <DependentUpon>201607281116299_Add_Film_Length.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Film\Actor.cs" />
     <Compile Include="Model\Film\Film.cs" />
@@ -88,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0002_201607271602061_Add_Genre_To_Films.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607281116299_Add_Film_Length.resx">
+      <DependentUpon>201607281116299_Add_Film_Length.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +123,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbUp\UpgradeScripts\Script0005_Seed_Data.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbUp\UpgradeScripts\Script0006_201607281116299_Add_Film_Length.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
