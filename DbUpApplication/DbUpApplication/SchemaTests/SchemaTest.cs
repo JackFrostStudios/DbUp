@@ -49,7 +49,7 @@ namespace DbUpApplication.SchemaTests
                 dbContext.Database.Delete();
                 dbContext.Database.CreateIfNotExists();
                 var comparer = new CompareSqlSql();
-                var status = comparer.CompareSqlToSql("efTestDb", "dbUpTestDb");
+                var status = comparer.CompareSqlToSql("efTestDb", "FilmDb");
 
                 Assert.True(status.IsValid, status.GetAllErrors());
                 Assert.False(status.HasWarnings, string.Join("\n", status.Warnings));
