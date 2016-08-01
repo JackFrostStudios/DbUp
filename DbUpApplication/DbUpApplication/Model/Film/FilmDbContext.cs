@@ -13,5 +13,10 @@ namespace DbUpApplication.Model
         {
             Database.SetInitializer<FilmDbContext>(null);
         }
+
+        public FilmDbContext()
+        {
+            
+        }
     }
 }

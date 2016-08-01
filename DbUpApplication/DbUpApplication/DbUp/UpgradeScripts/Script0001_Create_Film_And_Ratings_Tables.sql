@@ -13,5 +13,7 @@ CREATE TABLE dbo.FilmRatings
 	Comment nvarchar(max),
 	FilmId uniqueidentifier NOT NULL
 	CONSTRAINT "PK_dbo.FilmRatings" PRIMARY KEY (FilmRatingId)
-	CONSTRAINT "FK_dbo.FilmRatings_dbo.Films_FilmId" FOREIGN KEY (FilmId) REFERENCES dbo.Films (FilmId)
+	CONSTRAINT "FK_dbo.FilmRatings_dbo.Films_FilmId" FOREIGN KEY (FilmId) REFERENCES dbo.Films (FilmId) ON DELETE CASCADE
 )
+
+CREATE INDEX IX_FilmId ON dbo.FilmRatings (FilmId)
